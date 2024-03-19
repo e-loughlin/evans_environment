@@ -1,0 +1,16 @@
+return {}
+-- vim.g.copilot_enable_tab_completion = 1
+-- vim.g.copilot_enable_line_completion = 1
+--
+-- -- Copilot keybindings
+-- vim.api.nvim_set_keymap("n", "<C-p>", ":Copilot<CR>", { noremap = true, silent = true })
+-- -- vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot<CR>", { noremap = true, silent = true })
+--
+-- return {
+--   -- Copilot settings
+--   {
+--     "github/copilot.vim",
+--     event = "InsertEnter",
+--     config = function() vim.cmd "source ~/.config/nvim/extra_conf_copilot.vim" end,
+--   },
+-- }
