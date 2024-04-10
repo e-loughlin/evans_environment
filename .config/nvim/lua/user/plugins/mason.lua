@@ -11,8 +11,8 @@ return {
         "omnisharp", -- C#
         "tsserver", -- Typescript
         "pyright", -- Python
-        -- "gopls", -- Golang
-        -- "golangci_lint_ls" -- Golang
+        "gopls", -- Golang
+        "golangci_lint_ls" -- Golang
       })
     end,
   },

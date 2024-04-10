@@ -38,6 +38,9 @@ return {
 
     -- ToggleTerm
     ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+
+    -- Trouble
+    ["<leader>T"] = { "<cmd>Trouble document_diagnostics<cr>", desc = "Document Diagnostics" },
     
     ["<leader>tp"] = false,
     ["<leader>tf"] = false,
@@ -45,10 +48,6 @@ return {
     ["<leader>tv"] = false,
     ["<leader>tn"] = false,
     ["<leader>tu"] = false,
-    
-    ["<leader>Tf"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" },
-    ["<leader>Th"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
-    ["<leader>Tv"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" },
 
     -- ChatGPT
     ["<leader>zz"] = { "<cmd>ChatGPT<cr>", desc = "ChatGPT Chat Window" },
@@ -70,7 +69,8 @@ return {
     ["<leader>ze"] = { "<cmd>ChatGPTEditWithInstructions<cr>", desc = "ChatGPT Edit With Instructions" },
     },
   t = {
-    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
+    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+    ["<C-/>"] = { "<cmd>Trouble Toggle<cr>", desc = "Toggle Trouble Diagnostics" }
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },

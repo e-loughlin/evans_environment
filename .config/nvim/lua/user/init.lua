@@ -31,6 +31,7 @@ return {
   --   },
   -- },
   --
+  background_colour = "#000000",
   colorscheme = "gruvbox-material",
   plugins = {
     {
