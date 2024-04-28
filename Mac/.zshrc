@@ -422,7 +422,7 @@ confirm_action() {
     esac
 }
 
-export GH_TOKEN=$(pass show api/tokens/github)
+# export GH_TOKEN=$(pass show api/tokens/github)
 export OPENAI_API_KEY=$(pass show api/tokens/openai)
 
 # Git Stuff
