@@ -163,6 +163,8 @@ warning_message="Install Conda?"
 if confirm_action "$warning_message"; then
 	brew update
 	brew install anaconda
+	conda init zsh
+	source ~/.zshrc
 else
 	echo "Conda installation skipped..."
 fi
