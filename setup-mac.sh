@@ -157,3 +157,12 @@ if confirm_action "$warning_message"; then
 else
 	echo "ImageMagick installation skipped..."
 fi
+
+
+warning_message="Install Conda?"
+if confirm_action "$warning_message"; then
+	brew update
+	brew install anaconda
+else
+	echo "Conda installation skipped..."
+fi
