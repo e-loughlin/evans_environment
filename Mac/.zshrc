@@ -123,9 +123,10 @@ else
     fi
 fi
 unset __conda_setup
+export PATH="/usr/local/anaconda3/bin:$PATH"
 # <<< conda initialize <<<
 
-PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
