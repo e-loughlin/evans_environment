@@ -216,6 +216,15 @@ far() {
 # Python
 alias python=python3
 
+# Git helper command that checks out particular files from main
+checkout_main() {
+    if [ -z "$1" ]; then
+        echo "Usage: checkout_main <filename>"
+    else
+        git ls-files | grep "$1" | xargs git checkout main --
+    fi
+}
+
 gitq() {
 	git pull
 	git add .
