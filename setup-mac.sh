@@ -168,3 +168,24 @@ if confirm_action "$warning_message"; then
 else
 	echo "Conda installation skipped..."
 fi
+
+
+# Ruby Installation and Configuration
+warning_message="Install Ruby and configure chruby?"
+if confirm_action "$warning_message"; then
+	brew install chruby ruby-install xz
+	
+	# Install the latest stable version of Ruby supported by Jekyll
+	ruby-install ruby 3.1.3
+	
+	# Configure your shell to automatically use chruby
+	echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+	echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+	echo "chruby ruby-3.1.3" >> ~/.zshrc # run 'chruby' to see actual version
+
+	# Install Jekyll
+	gem install jekyll
+else
+	echo "Ruby and Jekyll installation skipped..."
+fi
+
