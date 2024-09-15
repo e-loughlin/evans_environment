@@ -199,6 +199,7 @@ if confirm_action "$warning_message"; then
     # Install the AWS CLI package
     sudo installer -pkg AWSCLIV2.pkg -target /
 
+		# Delete the pkg
     rm -rf AWSCLIV2.pkg
     
     # Verify the installation
