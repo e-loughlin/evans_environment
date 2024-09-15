@@ -189,3 +189,18 @@ else
 	echo "Ruby and Jekyll installation skipped..."
 fi
 
+
+# AWS CLI Installation
+warning_message="Install AWS CLI?"
+if confirm_action "$warning_message"; then
+    # Download the AWS CLI package
+    curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+    
+    # Install the AWS CLI package
+    sudo installer -pkg AWSCLIV2.pkg -target /
+    
+    # Verify the installation
+    aws --version
+else
+    echo "AWS CLI installation skipped..."
+fi

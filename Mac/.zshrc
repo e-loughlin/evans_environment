@@ -441,3 +441,6 @@ alias gc="git commit"
 alias gp="git push"
 
 
+# AWS Auto Completion
+complete -C aws_completer aws
+
