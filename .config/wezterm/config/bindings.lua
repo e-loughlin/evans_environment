@@ -168,6 +168,28 @@ local keys = {
       action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
    },
 
+   -- Adjust pane sizes
+   {
+      mods = mod.SUPER,
+      key = "LeftArrow",
+      action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+   },
+   {
+      mods = mod.SUPER,
+      key = "RightArrow",
+      action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+   },
+   {
+      mods = mod.SUPER,
+      key = "DownArrow",
+      action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+   },
+   {
+      mods = mod.SUPER,
+      key = "UpArrow",
+      action = wezterm.action.AdjustPaneSize({ "Up", 5 }),
+   },
+
    -- panes: zoom+close pane
    { key = 'Enter', mods = mod.SUPER,     action = act.TogglePaneZoomState },
    { key = 'w',     mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = false }) },
