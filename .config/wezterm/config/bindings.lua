@@ -222,8 +222,8 @@ local keys = {
       action = act.IncreaseFontSize,
    },
 
-   { key = 'h', mods = mod.SUPER, action = wezterm.action.DisableDefaultAssignment },
-   { key = 'l', mods = mod.SUPER, action = wezterm.action.DisableDefaultAssignment },
+   { key = 'h', mods = mod.SUPER, action = act.SendString("[b") },
+   { key = 'l', mods = mod.SUPER, action = act.SendString ']b' },
 }
 
 
