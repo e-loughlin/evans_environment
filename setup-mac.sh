@@ -1,5 +1,8 @@
 !/bin/bash
 
+
+
+
 ## Function to display the warning message and get user confirmation
 confirm_action() {
     warning_message=$1
@@ -11,6 +14,19 @@ confirm_action() {
         *) echo "Invalid choice. Please enter Y or n." ; confirm_action "$warning_message" ;;
     esac
 }
+
+# WezTerm (Terminal)
+warning_message="Install or upgrade WezTerm?"
+if confirm_action "$warning_message"; then
+	brew upgrade --cask wezterm || brew install --cask wezterm
+fi
+
+# Fonts
+warning_message="Install Fonts?"
+if confirm_action "$warning_message"; then
+	mkdir ~/.local/share/fonts
+	cp ./fonts/* ~/.local/share/fonts 
+fi
 
 # Fonts
 warning_message="Install Fonts?"
