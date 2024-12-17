@@ -2,6 +2,7 @@ return {
 	-- behaviours
 	debug_key_events = true,
 	automatically_reload_config = true,
+	window_close_confirmation = "AlwaysPrompt",
 	exit_behavior = "CloseOnCleanExit", -- if the shell program exited with a successful status
 	exit_behavior_messaging = "Verbose",
 	status_update_interval = 1000,
