@@ -28,13 +28,6 @@ if confirm_action "$warning_message"; then
 	cp ./fonts/* ~/.local/share/fonts 
 fi
 
-# Fonts
-warning_message="Install Fonts?"
-if confirm_action "$warning_message"; then
-	mkdir ~/.local/share/fonts
-	cp ./fonts/* ~/.local/share/fonts 
-fi
-
 warning_message="Install bash completion?"
 if confirm_action "$warning_message"; then
 	brew install bash completion
@@ -149,11 +142,10 @@ fi
 # LaTeX Stuff
 warning_message="Install LaTeX Stuff?"
 if confirm_action "$warning_message"; then
-	brew update
-	brew install --cask mactex
-	brew install latexmk
+    brew update
+    brew install --cask mactex
 else
-	echo "LaTeX stuff skipped..."
+    echo "LaTeX stuff skipped..."
 fi
 
 warning_message="Install ImageMagick?"
@@ -164,6 +156,32 @@ else
 	echo "ImageMagick installation skipped..."
 fi
 
+warning_message="Install dependencies for image.nvim image display in Neovim?"
+if confirm_action "$warning_message"; then
+    # Install Lua 5.1
+    wget https://www.lua.org/ftp/lua-5.1.5.tar.gz
+    tar xzf lua-5.1.5.tar.gz
+    cd lua-5.1.5 || exit
+    make macosx
+    mkdir -p ~/opt
+    make INSTALL_TOP=$HOME/opt/lua@5.1 install
+    mkdir -p ~/.local/bin
+    ln -s ~/opt/lua@5.1/bin/lua ~/.local/bin/lua5.1
+    export PATH=~/.local/bin/:$PATH
+    echo 'export PATH=~/.local/bin/:$PATH' >> ~/.zshrc
+    source ~/.zshrc
+    echo "Lua 5.1 installed successfully."
+
+    # Install LuaRocks
+    brew install luarocks
+    echo "LuaRocks installed successfully."
+
+    # Install the 'magick' Lua rock
+    luarocks --lua-version=5.1 install magick
+    echo "The 'magick' Lua rock installed successfully."
+else
+    echo "Installation of dependencies for image.nvim image display in Neovim skipped..."
+fi
 
 warning_message="Install Ghostscript? (PDF Compression)"
 if confirm_action "$warning_message"; then
