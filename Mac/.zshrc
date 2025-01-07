@@ -444,3 +444,31 @@ alias gp="git push"
 # AWS Auto Completion
 complete -C aws_completer aws
 
+# This is for Neovim Environments (Particularly Jupyter Notebook Support)
+source ~/.virtualenvs/neovim/bin/activate >/dev/null 2>&1
+
+
+# Used for installing a new kernel in Jupyter Notebooks based on the current environment
+function install_kernel() {
+    # Check if a project_name argument is provided
+    if [ -z "$1" ]; then
+        # If not, prompt the user
+        read -p "No project_name provided. Would you like to use the current directory name as the kernel name? (y/n): " choice
+        if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+            project_name=$(basename "$(pwd)")
+            echo "Using current directory name: $project_name"
+        else
+            read -p "Please enter a custom project name: " project_name
+        fi
+    else
+        # Use the provided project_name
+        project_name=$1
+    fi
+    
+    # Run the python command to install the kernel
+    python -m ipykernel install --user --name "$project_name"
+    echo "Kernel installed with name: $project_name"
+}
+
+# Alias for quick access
+alias installkernel='install_kernel'

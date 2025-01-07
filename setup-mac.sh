@@ -183,6 +183,24 @@ else
     echo "Installation of dependencies for image.nvim image display in Neovim skipped..."
 fi
 
+warning_message="Set up virtual environment for Neovim? (Python dependencies)"
+if confirm_action "$warning_message"; then
+    # Create a new virtual environment for Neovim
+    mkdir -p ~/.virtualenvs
+    python -m venv ~/.virtualenvs/neovim # create a new virtual environment
+
+    # Activate the virtual environment (adjust for shell type)
+    source ~/.virtualenvs/neovim/bin/activate # for bash/zsh
+    # For fish shell, use: source ~/.virtualenvs/neovim/bin/activate.fish
+
+    # Install necessary Python packages for Neovim and Magma
+    pip install pynvim jupyter_client cairosvg plotly kaleido pnglatex pyperclip nbformat jupytext
+
+    echo "Virtual environment setup complete and packages installed."
+else
+    echo "Virtual environment setup skipped..."
+fi
+
 warning_message="Install Ghostscript? (PDF Compression)"
 if confirm_action "$warning_message"; then
 	brew update
@@ -190,6 +208,15 @@ if confirm_action "$warning_message"; then
 	mv /opt/homebrew/bin/gs /opt/homebrew/bin/ghostscript
 else
 	echo "ImageMagick installation skipped..."
+fi
+
+
+warning_message="Install Quarto? (Jupyter Notebooks Tools)"
+if confirm_action "$warning_message"; then
+	brew update
+	brew install quarto
+else
+	echo "Quarto installation skipped..."
 fi
 
 
