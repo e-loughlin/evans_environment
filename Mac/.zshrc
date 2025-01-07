@@ -448,13 +448,12 @@ complete -C aws_completer aws
 source ~/.virtualenvs/neovim/bin/activate >/dev/null 2>&1
 
 
-# Used for installing a new kernel in Jupyter Notebooks based on the current environment
+# Used for installing a new kernel in Jupyter Notebooks
 function install_kernel() {
     # Check if a project_name argument is provided
     if [ -z "$1" ]; then
         # If not, prompt the user
-        read -p "No project_name provided. Would you like to use the current directory name as the kernel name? (y/n): " choice
-        if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+        if confirm_action "No project_name provided. Would you like to use the current directory name as the kernel name?"; then
             project_name=$(basename "$(pwd)")
             echo "Using current directory name: $project_name"
         else
@@ -464,7 +463,7 @@ function install_kernel() {
         # Use the provided project_name
         project_name=$1
     fi
-    
+
     # Run the python command to install the kernel
     python -m ipykernel install --user --name "$project_name"
     echo "Kernel installed with name: $project_name"
