@@ -107,9 +107,10 @@ return {
 
           ["<leader>r"] = { name = " Quarto (Jupyter Runner)" },
           ["<leader>rr"] = { ":QuartoSend<CR>", desc = "Run cell" },
-          ["<leader>ra"] = { ":QuartoSendAll<CR>", desc = "Run cell and above" },
-          ["<leader>rb"] = { ":QuartoSendBelow<CR>", desc = "Run cell and below" },
+          ["<leader>ra"] = { ":QuartoSendAll<CR>", desc = "Run all cells" },
+          ["<leader>rb"] = { ":QuartoSendBelow<CR>", desc = "Run current cell and below" },
           ["<leader>rl"] = { ":QuartoSendLine<CR>", desc = "Run line" },
+          ["<leader>rp"] = { ":QuartoPreview", desc = "Preview Notebook" },
         },
         t = {
           ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
