@@ -195,6 +195,7 @@ if confirm_action "$warning_message"; then
 
     # Install necessary Python packages for Neovim and Magma
     pip install pynvim jupyter_client cairosvg plotly kaleido pnglatex pyperclip nbformat jupytext
+    brew install netpbm
 
     echo "Virtual environment setup complete and packages installed."
 else
