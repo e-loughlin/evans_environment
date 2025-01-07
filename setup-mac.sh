@@ -149,9 +149,9 @@ fi
 # LaTeX Stuff
 warning_message="Install LaTeX Stuff?"
 if confirm_action "$warning_message"; then
-	sudo apt-get update
-	sudo apt-get install texlive-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex
-	sudo apt-get install latexmk
+	brew update
+	brew install --cask mactex
+	brew install latexmk
 else
 	echo "LaTeX stuff skipped..."
 fi
