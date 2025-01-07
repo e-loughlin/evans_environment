@@ -15,12 +15,12 @@ return {
       move = {
         enable = true,
         set_jumps = false, -- Change to true if you want to populate the jump list
-        goto_next_start = {
-          ["]b"] = { query = "@code_cell.inner", desc = "next code block" },
-        },
-        goto_previous_start = {
-          ["[b"] = { query = "@code_cell.inner", desc = "previous code block" },
-        },
+        -- goto_next_start = {
+        --   ["]b"] = { query = "@code_cell.inner", desc = "next code block" },
+        -- },
+        -- goto_previous_start = {
+        --   ["[b"] = { query = "@code_cell.inner", desc = "previous code block" },
+        -- },
       },
       select = {
         enable = true,
