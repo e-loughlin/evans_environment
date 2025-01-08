@@ -30,7 +30,7 @@ return {
           ["<leader>Mp"] = { "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
 
           -- ToggleTerm
-          ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+          ["<C-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
 
           ["<leader>tp"] = false,
           ["<leader>tf"] = false,
@@ -110,10 +110,10 @@ return {
           ["<leader>ra"] = { ":QuartoSendAll<CR>", desc = "Run all cells" },
           ["<leader>rb"] = { ":QuartoSendBelow<CR>", desc = "Run current cell and below" },
           ["<leader>rl"] = { ":QuartoSendLine<CR>", desc = "Run line" },
-          ["<leader>rp"] = { ":QuartoPreview", desc = "Preview Notebook" },
+          ["<leader>rp"] = { ":QuartoPreview<CR>", desc = "Preview Notebook" },
         },
         t = {
-          ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+          ["<C-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
           ["<C-/>"] = { "<cmd>Trouble Toggle<cr>", desc = "Toggle Trouble Diagnostics" },
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
