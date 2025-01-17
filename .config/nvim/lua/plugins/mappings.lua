@@ -111,7 +111,20 @@ return {
           ["<leader>rb"] = { ":QuartoSendBelow<CR>", desc = "Run current cell and below" },
           ["<leader>rl"] = { ":QuartoSendLine<CR>", desc = "Run line" },
           ["<leader>rp"] = { ":QuartoPreview<CR>", desc = "Preview Notebook" },
+
+          -- Git (Fugitive) Mappings
+          ["<leader>G"] = { name = " Git" }, -- group name for Git mappings
+          ["<leader>Gs"] = { "<cmd>Git<cr>", desc = "Git status" },
+          ["<leader>Gp"] = { "<cmd>Git push<cr>", desc = "Git push" },
+          ["<leader>GP"] = { "<cmd>Git pull<cr>", desc = "Git pull" },
+          ["<leader>Gb"] = { "<cmd>Git blame<cr>", desc = "Git blame" },
+          ["<leader>Gd"] = { "<cmd>Gvdiffsplit<cr>", desc = "Git diff" },
+          ["<leader>GC"] = { "<cmd>Git commit<cr>", desc = "Git commit" },
+          ["<leader>Gl"] = { "<cmd>Glog<cr>", desc = "Git log" },
+          ["<leader>G1"] = { "<cmd>diffget //2<cr>", desc = "Git take left diff" },
+          ["<leader>G2"] = { "<cmd>diffget //3<cr>", desc = "Git take right diff" },
         },
+
         t = {
           ["<C-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
           ["<C-/>"] = { "<cmd>Trouble Toggle<cr>", desc = "Toggle Trouble Diagnostics" },
