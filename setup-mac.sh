@@ -197,6 +197,10 @@ if confirm_action "$warning_message"; then
     pip install pynvim jupyter_client cairosvg plotly kaleido pnglatex pyperclip nbformat jupytext
     brew install netpbm
 
+		# DebugPy for DAP
+    python -m venv debugpy
+    debugpy/bin/python -m pip install debugpy
+
     echo "Virtual environment setup complete and packages installed."
 else
     echo "Virtual environment setup skipped..."
