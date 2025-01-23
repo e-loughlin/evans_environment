@@ -6,9 +6,6 @@ return {
       mappings = {
         -- first key is the mode
         n = {
-
-          ["<leader>h"] = false,
-
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
@@ -42,26 +39,6 @@ return {
           ["<leader>tn"] = false,
           ["<leader>tu"] = false,
 
-          -- ChatGPT
-          -- ["<leader>z"] = { name = "󰚩 ChatGPT" },
-          -- ["<leader>zz"] = { "<cmd>ChatGPT<cr>", desc = "ChatGPT Chat Window" },
-          -- ["<leader>zr"] = { name = "ChatGPT Run ..." },
-          -- ["<leader>zra"] = { "<cmd>ChatGPTRun add_tests<cr>", desc = "Add Tests" },
-          -- ["<leader>zrC"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", desc = "Code Readability Analysis" },
-          -- ["<leader>zrc"] = { "<cmd>ChatGPTRun complete_code<cr>", desc = "Complete Code" },
-          -- ["<leader>zrd"] = { "<cmd>ChatGPTRun docstring<cr>", desc = "Docstring" },
-          -- ["<leader>zre"] = { "<cmd>ChatGPTRun explain_code<cr>", desc = "Explain Code" },
-          -- ["<leader>zrf"] = { "<cmd>ChatGPTRun fix_bugs<cr>", desc = "Fix Bugs" },
-          -- ["<leader>zrg"] = { "<cmd>ChatGPTRun grammar_correction<cr>", desc = "Grammar Correction" },
-          -- ["<leader>zrk"] = { "<cmd>ChatGPTRun keywords<cr>", desc = "Keywords" },
-          -- ["<leader>zro"] = { "<cmd>ChatGPTRun optimize_code<cr>", desc = "Optimize Code" },
-          -- ["<leader>zrr"] = { "<cmd>ChatGPTRun roxygen_edit<cr>", desc = "Roxygen Edit" },
-          -- ["<leader>zrs"] = { "<cmd>ChatGPTRun summarize<cr>", desc = "Summarize" },
-          -- ["<leader>zrt"] = { "<cmd>ChatGPTRun translate<cr>", desc = "Translate" },
-          -- ["<leader>zc"] = { "<cmd>ChatGPTCompleteCode<cr>", desc = "ChatGPT Complete Code" },
-          -- ["<leader>za"] = { "<cmd>ChatGPTActAs<cr>", desc = "ChatGPT Act As" },
-          -- ["<leader>ze"] = { "<cmd>ChatGPTEditWithInstructions<cr>", desc = "ChatGPT Edit With Instructions" },
-
           -- Code Companion
 
           ["<leader>z"] = { name = "󰚩 Code Companion" },
@@ -70,24 +47,6 @@ return {
           ["<leader>zZ"] = { "<cmd>CodeCompanionCmd<cr>", desc = "Generate Terminal Command" },
           ["<leader>zC"] = { "<cmd>CodeCompanion /commit<cr>", desc = "Git Commit Message" },
           ["<leader>za"] = { "<cmd>CodeCompanionActions<cr>", desc = "Action Pallete" },
-          -- ["<leader>zr"] = { name = "ChatGPT Run ..." },
-          -- ["<leader>zra"] = { "<cmd>ChatGPTRun add_tests<cr>", desc = "Add Tests" },
-          -- ["<leader>zrC"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", desc = "Code Readability Analysis" },
-          -- ["<leader>zrc"] = { "<cmd>ChatGPTRun complete_code<cr>", desc = "Complete Code" },
-          -- ["<leader>zrd"] = { "<cmd>ChatGPTRun docstring<cr>", desc = "Docstring" },
-          -- ["<leader>zre"] = { "<cmd>ChatGPTRun explain_code<cr>", desc = "Explain Code" },
-          -- ["<leader>zrf"] = { "<cmd>ChatGPTRun fix_bugs<cr>", desc = "Fix Bugs" },
-          -- ["<leader>zrg"] = { "<cmd>ChatGPTRun grammar_correction<cr>", desc = "Grammar Correction" },
-          -- ["<leader>zrk"] = { "<cmd>ChatGPTRun keywords<cr>", desc = "Keywords" },
-          -- ["<leader>zro"] = { "<cmd>ChatGPTRun optimize_code<cr>", desc = "Optimize Code" },
-          -- ["<leader>zrr"] = { "<cmd>ChatGPTRun roxygen_edit<cr>", desc = "Roxygen Edit" },
-          -- ["<leader>zrs"] = { "<cmd>ChatGPTRun summarize<cr>", desc = "Summarize" },
-          -- ["<leader>zrt"] = { "<cmd>ChatGPTRun translate<cr>", desc = "Translate" },
-          -- ["<leader>zc"] = { "<cmd>ChatGPTCompleteCode<cr>", desc = "ChatGPT Complete Code" },
-          -- ["<leader>za"] = { "<cmd>ChatGPTActAs<cr>", desc = "ChatGPT Act As" },
-          -- ["<leader>ze"] = { "<cmd>ChatGPTEditWithInstructions<cr>", desc = "ChatGPT Edit With Instructions" },
-          -- DB
-          --
 
           -- Copilot
           ["<C-j>"] = { "copilot#Accept('<CR>')", desc = "Copilot Accept", expr = true, silent = true },
@@ -111,7 +70,6 @@ return {
           ["<leader>mo"] = { ":noautocmd MoltenEnterOutput<CR>", desc = "Show/Enter output" },
 
           -- Quarto Mappings
-
           ["<leader>r"] = { name = " Quarto (Jupyter Runner)" },
           ["<leader>rr"] = { ":QuartoSend<CR>", desc = "Run cell" },
           ["<leader>ra"] = { ":QuartoSendAll<CR>", desc = "Run all cells" },
@@ -132,16 +90,17 @@ return {
           ["<leader>G2"] = { "<cmd>diffget //3<cr>", desc = "Git take right diff" },
 
           -- Harpoon
-
           ["<leader>h"] = { name = "󰛢 Harpoon" }, -- group name for Harpoon mappings
-          ["<leader>ha"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", desc = "Add file" },
-          ["<leader>hr"] = { "<cmd>lua require('harpoon.mark').rm_file()<cr>", desc = "Remove file" },
-          ["<leader>hm"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Harpoon menu" },
-          ["<leader>hn"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", desc = "Next file" },
-          ["<leader>hp"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", desc = "Previous file" },
-          ["<leader>h1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc = "File 1" },
-          ["<leader>h2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc = "File 2" },
-          ["<leader>h3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", desc = "File 3" },
+          ["<leader>ha"] = { function() require("harpoon"):list():add() end, desc = "Add" },
+          ["<leader>hd"] = { function() require("harpoon"):list():remove() end, desc = "Remove" },
+          ["<leader>hh"] = { function() _G.toggle_harpoon_telescope() end, desc = "Menu" },
+          ["<leader>h1"] = { function() require("harpoon"):list():select(1) end, desc = "File 1" },
+          ["<leader>h2"] = { function() require("harpoon"):list():select(2) end, desc = "File 2" },
+          ["<leader>h3"] = { function() require("harpoon"):list():select(3) end, desc = "File 3" },
+          ["<leader>h4"] = { function() require("harpoon"):list():select(4) end, desc = "File 4" },
+          ["<leader>h5"] = { function() require("harpoon"):list():select(5) end, desc = "File 5" },
+          ["<leader>hn"] = { function() require("harpoon"):list():next() end, desc = "Next file" },
+          ["<leader>hp"] = { function() require("harpoon"):list():prev() end, desc = "Previous file" },
         },
 
         t = {
