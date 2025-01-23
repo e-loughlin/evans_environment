@@ -243,8 +243,13 @@ local keys = {
       action = act.IncreaseFontSize,
    },
 
+   -- Navigate Buffers in Neovim
    { key = 'h', mods = mod.SUPER, action = act.SendString("[b") },
    { key = 'l', mods = mod.SUPER, action = act.SendString ']b' },
+
+   -- Used by Harpoon in Neovim
+   { key = '-', mods = mod.SUPER, action = act.SendString(" hp") },
+   { key = '=', mods = mod.SUPER, action = act.SendString(" hn") },
 
    { key = '1', mods = mod.SUPER, action = wezterm.action.ActivateTab(0) },
    { key = '2', mods = mod.SUPER, action = wezterm.action.ActivateTab(1) },
