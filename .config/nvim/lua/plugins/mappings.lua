@@ -6,6 +6,9 @@ return {
       mappings = {
         -- first key is the mode
         n = {
+
+          ["<leader>h"] = false,
+
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
@@ -84,6 +87,10 @@ return {
           -- ["<leader>za"] = { "<cmd>ChatGPTActAs<cr>", desc = "ChatGPT Act As" },
           -- ["<leader>ze"] = { "<cmd>ChatGPTEditWithInstructions<cr>", desc = "ChatGPT Edit With Instructions" },
           -- DB
+          --
+
+          -- Copilot
+          ["<C-j>"] = { "copilot#Accept('<CR>')", desc = "Copilot Accept", expr = true, silent = true },
 
           ["<leader>D"] = { name = "󰆼 Db Tools" },
           ["<leader>Du"] = { "<cmd>DBUIToggle<cr>", desc = "DB UI Toggle" },
@@ -123,6 +130,18 @@ return {
           ["<leader>Gl"] = { "<cmd>Glog<cr>", desc = "Git log" },
           ["<leader>G1"] = { "<cmd>diffget //2<cr>", desc = "Git take left diff" },
           ["<leader>G2"] = { "<cmd>diffget //3<cr>", desc = "Git take right diff" },
+
+          -- Harpoon
+
+          ["<leader>h"] = { name = "󰛢 Harpoon" }, -- group name for Harpoon mappings
+          ["<leader>ha"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", desc = "Add file" },
+          ["<leader>hr"] = { "<cmd>lua require('harpoon.mark').rm_file()<cr>", desc = "Remove file" },
+          ["<leader>hm"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Harpoon menu" },
+          ["<leader>hn"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", desc = "Next file" },
+          ["<leader>hp"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", desc = "Previous file" },
+          ["<leader>h1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc = "File 1" },
+          ["<leader>h2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc = "File 2" },
+          ["<leader>h3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", desc = "File 3" },
         },
 
         t = {
@@ -130,6 +149,9 @@ return {
           ["<C-/>"] = { "<cmd>Trouble Toggle<cr>", desc = "Toggle Trouble Diagnostics" },
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
+        },
+        i = {
+          ["<C-j>"] = { "copilot#Accept('<CR>')", desc = "Copilot Accept", expr = true, silent = true },
         },
         v = {
           ["<leader>ze"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add Selection to Chat" },

@@ -122,6 +122,9 @@ return {
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
+        -- Remove the default "Home Screen" mapping so I can use h for something better
+        ["<Leader>h"] = false,
+
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
           function()
