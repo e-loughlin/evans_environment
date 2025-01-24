@@ -83,7 +83,7 @@ return {
           ["<leader>Gp"] = { "<cmd>Git push<cr>", desc = "Git push" },
           ["<leader>GP"] = { "<cmd>Git pull<cr>", desc = "Git pull" },
           ["<leader>Gb"] = { "<cmd>Git blame<cr>", desc = "Git blame" },
-          ["<leader>Gd"] = { "<cmd>Gvdiffsplit<cr>", desc = "Git diff" },
+          ["<leader>Gd"] = { "<cmd>Gvdiffsplit!<cr>", desc = "Git diff" },
           ["<leader>GC"] = { "<cmd>Git commit<cr>", desc = "Git commit" },
           ["<leader>Gl"] = { "<cmd>Glog<cr>", desc = "Git log" },
           ["<leader>G1"] = { "<cmd>diffget //2<cr>", desc = "Git take left diff" },
@@ -92,15 +92,19 @@ return {
           -- Harpoon
           ["<leader>h"] = { name = "󰛢 Harpoon" }, -- group name for Harpoon mappings
           ["<leader>ha"] = { function() require("harpoon"):list():add() end, desc = "Add" },
-          ["<leader>hd"] = { function() require("harpoon"):list():remove() end, desc = "Remove" },
+          -- Commented out because it causes issues. Use CTRL+D when telescope is open
+          -- ["<leader>hd"] = { function() require("harpoon"):list():remove() end, desc = "Remove" },
           ["<leader>hh"] = { function() _G.toggle_harpoon_telescope() end, desc = "Menu" },
           ["<leader>h1"] = { function() require("harpoon"):list():select(1) end, desc = "File 1" },
           ["<leader>h2"] = { function() require("harpoon"):list():select(2) end, desc = "File 2" },
           ["<leader>h3"] = { function() require("harpoon"):list():select(3) end, desc = "File 3" },
           ["<leader>h4"] = { function() require("harpoon"):list():select(4) end, desc = "File 4" },
           ["<leader>h5"] = { function() require("harpoon"):list():select(5) end, desc = "File 5" },
-          ["<leader>hn"] = { function() require("harpoon"):list():next() end, desc = "Next file" },
-          ["<leader>hp"] = { function() require("harpoon"):list():prev() end, desc = "Previous file" },
+          ["<leader>hn"] = { function() require("harpoon"):list():next { ui_nav_wrap = true } end, desc = "Next file" },
+          ["<leader>hp"] = {
+            function() require("harpoon"):list():prev { ui_nav_wrap = true } end,
+            desc = "Previous file",
+          },
         },
 
         t = {
