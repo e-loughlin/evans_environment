@@ -448,7 +448,7 @@ complete -C aws_completer aws
 source ~/.virtualenvs/neovim/bin/activate >/dev/null 2>&1
 
 
-# Used for installing a new kernel in Jupyter Notebooks
+# Used for installing a new kernel in Jupyter Notebooks based on the current environment
 function install_kernel() {
     # Check if a project_name argument is provided
     if [ -z "$1" ]; then
@@ -467,6 +467,31 @@ function install_kernel() {
     # Run the python command to install the kernel
     python -m ipykernel install --user --name "$project_name"
     echo "Kernel installed with name: $project_name"
+}
+
+delete_kernel() {
+    if [ -z "$1" ]; then
+        echo "Usage: delete_kernel <kernel_name>"
+        return 1
+    fi
+
+    local kernel_name="$1"
+    local kernel_path=$(jupyter kernelspec list | grep " $kernel_name$" | awk '{print $2}')
+
+    if [ -z "$kernel_path" ]; then
+        echo "Kernel '$kernel_name' not found."
+        return 1
+    fi
+
+    echo "Deleting kernel '$kernel_name' at $kernel_path..."
+    rm -rf "$kernel_path"
+
+    if [ $? -eq 0 ]; then
+        echo "Kernel '$kernel_name' deleted successfully."
+    else
+        echo "Failed to delete kernel '$kernel_name'."
+        return 1
+    fi
 }
 
 # Alias for quick access
