@@ -8,6 +8,8 @@ return {
       -- vim.g.copilot_no_tab_map = true -- Example: Disable default tab mappings
       -- Set your key mappings
       -- vim.api.nvim_set_keymap("i", "<C-c>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      --
+      vim.g.copilot_no_tab_map = true
     end,
   },
 }

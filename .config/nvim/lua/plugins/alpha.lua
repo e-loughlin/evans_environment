@@ -32,6 +32,7 @@ return {
       "⠿⠿⠏⠉⠁⠀⠾⠿⠛⠛⠿⠿⠼⠿⠷⠀⠻⠿⠿⠀⠿⠿⠇⠙⠿⣷⣶⡿⠿⠃",
     }
 
+    -- opts.section.header.opts = { hl = { { "GreenHLGroup", 0, 12 }, { "BlueHLGroup", 13, 20 } } }
     --     -- Possible options: Function, String, Number, Keyword, Identifier...
     opts.section.header.opts.hl = "Identifier"
     opts.section.footer.opts.hl = "Identifier"

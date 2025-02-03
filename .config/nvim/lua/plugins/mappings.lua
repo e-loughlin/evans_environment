@@ -105,16 +105,17 @@ return {
             function() require("harpoon"):list():prev { ui_nav_wrap = true } end,
             desc = "Previous file",
           },
+
+          ["'D"] = { "<cmd>delmarks A-Z0-9<cr>", desc = "Delete all marks" },
         },
 
         t = {
           ["<C-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
-          ["<C-/>"] = { "<cmd>Trouble Toggle<cr>", desc = "Toggle Trouble Diagnostics" },
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
         },
         i = {
-          ["<C-j>"] = { "copilot#Accept('<CR>')", desc = "Copilot Accept", expr = true, silent = true },
+          -- ["<C-CR>"] = { "copilot#Accept()", desc = "Copilot Accept", expr = true, silent = true },
         },
         v = {
           ["<leader>ze"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add Selection to Chat" },
