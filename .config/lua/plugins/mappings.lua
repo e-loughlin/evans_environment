@@ -24,10 +24,10 @@ return {
           -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
           --
           -- Markdown
-          ["<leader>M"] = { desc = "Markdown" },
-          ["<leader>Mt"] = { "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview Toggle" },
-          ["<leader>Ms"] = { "<cmd>MarkdownPreviewStop<cr>", desc = "Markdown Preview Stop" },
-          ["<leader>Mp"] = { "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
+          ["<leader>m"] = { desc = "Markdown" },
+          ["<leader>mt"] = { "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview Toggle" },
+          ["<leader>ms"] = { "<cmd>MarkdownPreviewStop<cr>", desc = "Markdown Preview Stop" },
+          ["<leader>mp"] = { "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
 
           -- ToggleTerm
           ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
@@ -90,27 +90,6 @@ return {
           ["<leader>Df"] = { "<cmd>DBUIFindBuffer<cr>", desc = "DB UI Find buffer" },
           ["<leader>Dr"] = { "<cmd>DBUIRenameBuffer<cr>", desc = "DB UI Rename buffer" },
           ["<leader>Dl"] = { "<cmd>DBUILastQueryInfo<cr>", desc = "DB UI Last query infos" },
-
-          -- Molten Mappings
-          ["<leader>m"] = { name = "󰈸 Molten (Python Runner)" },
-          ["<leader>mi"] = { ":MoltenInit<CR>", desc = "Initialize plugin with a Kernel" },
-          ["<leader>me"] = { name = "Evaluate..." },
-          ["<leader>meo"] = { ":MoltenEvaluateOperator<CR>", desc = "Run operator selection" },
-          ["<leader>mrl"] = { ":MoltenEvaluateLine<CR>", desc = "Evaluate line" },
-          ["<leader>mrr"] = { ":MoltenReevaluateCell<CR>", desc = "Re-evaluate cell" },
-          ["<leader>mrv"] = { ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "Evaluate visual selection" },
-          ["<leader>md"] = { ":MoltenDelete<CR>", desc = "Delete cell" },
-          ["<leader>mh"] = { ":MoltenHideOutput<CR>", desc = "Hide output" },
-          ["<leader>mo"] = { ":noautocmd MoltenEnterOutput<CR>", desc = "Show/Enter output" },
-
-          -- Quarto Mappings
-
-          ["<leader>r"] = { name = " Quarto (Jupyter Runner)" },
-          ["<leader>rr"] = { ":QuartoSend<CR>", desc = "Run cell" },
-          ["<leader>ra"] = { ":QuartoSendAll<CR>", desc = "Run all cells" },
-          ["<leader>rb"] = { ":QuartoSendBelow<CR>", desc = "Run current cell and below" },
-          ["<leader>rl"] = { ":QuartoSendLine<CR>", desc = "Run line" },
-          ["<leader>rp"] = { ":QuartoPreview<CR>", desc = "Preview Notebook" },
         },
         t = {
           ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
@@ -120,12 +99,6 @@ return {
         },
         v = {
           ["<leader>ze"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "Add Selection to Chat" },
-
-          ["<leader>m"] = { name = "󰈸 Molten (Python / Jupyter Runner)" },
-
-          ["<leader>me"] = { ":<C-u>MoltenEvaluateVisual<CR>gv", desc = "Evaluate visual selection" },
-
-          ["<localleader>rr"] = { ":QuartoRunRange<CR>", desc = "Run visual range" },
         },
       },
     },
