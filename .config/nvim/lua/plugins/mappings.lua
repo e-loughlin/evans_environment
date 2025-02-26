@@ -6,11 +6,6 @@ return {
       mappings = {
         -- first key is the mode
         n = {
-          ["<C-Left>"] = { ":vertical resize -2<CR>", desc = "Resize window left" },
-          ["<C-Right>"] = { ":vertical resize +2<CR>", desc = "Resize window right" },
-          ["<C-Up>"] = { ":resize +2<CR>", desc = "Resize window up" },
-          ["<C-Down>"] = { ":resize -2<CR>", desc = "Resize window down" },
-
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
