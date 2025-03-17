@@ -34,6 +34,7 @@ return {
       ensure_installed = {
         "python",
         "codelldb", -- Add the LLDB debugger
+        "dart",
       },
       handlers = {
         python = function(source_name)
@@ -45,34 +46,37 @@ return {
           }
         end,
 
-        -- codelldb = function(source_name)
-        --   local dap = require "dap"
-        --   dap.adapters.lldb = {
-        --     type = "executable",
-        --     command = "/usr/bin/lldb",
-        --     name = "lldb",
-        --   }
-        --
-        --   dap.configurations.cpp = {
-        --     {
-        --       type = "lldb",
-        --       request = "launch",
-        --       name = "Launch file with arguments",
-        --       program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
-        --       args = function()
-        --         local args_string = vim.fn.input "Arguments: "
-        --         return vim.split(args_string, " +")
-        --       end,
-        --       cwd = "${workspaceFolder}",
-        --       stopOnEntry = false,
-        --       runInTerminal = true,
-        --     },
-        --   }
-        --
-        --   -- Optionally apply the same configuration to C and Rust
-        --   dap.configurations.c = dap.configurations.cpp
-        --   dap.configurations.rust = dap.configurations.cpp
-        -- end,
+        dart = function()
+          local dap = require "dap"
+          dap.adapters.dart = {
+            type = "executable",
+            command = "dart",
+            args = { "debug_adapter" },
+          }
+
+          dap.configurations.dart = {
+            {
+              name = "Launch Dart Program",
+              type = "dart",
+              request = "launch",
+              program = "${file}",
+              cwd = vim.fn.getcwd(),
+              args = function()
+                local input_str = vim.fn.input("Enter arguments: ", "")
+                if input_str == "" then
+                  return {} -- No arguments
+                end
+
+                -- Manually split input into a table
+                local args = {}
+                for arg in input_str:gmatch "%S+" do
+                  table.insert(args, arg)
+                end
+                return args
+              end,
+            },
+          }
+        end,
       },
     },
   },

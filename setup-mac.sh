@@ -216,6 +216,8 @@ else
 fi
 
 
+chmod +x ~/ws/evans_environment/tools
+
 warning_message="Install Quarto? (Jupyter Notebooks Tools)"
 if confirm_action "$warning_message"; then
 	brew update

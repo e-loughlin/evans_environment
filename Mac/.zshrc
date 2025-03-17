@@ -496,3 +496,5 @@ delete_kernel() {
 
 # Alias for quick access
 alias installkernel='install_kernel'
+
+PATH=$PATH:$HOME/evans_environment/tools

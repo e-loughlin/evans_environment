@@ -25,6 +25,12 @@ return {
       cmd = { "dart", "language-server", "--protocol=lsp" },
       on_attach = on_attach,
       capabilities = capabilities,
+      settings = {
+        dart = {
+          sdkPath = "/usr/local/dart-2.19.6",
+        },
+      },
+      root_dir = lspconfig.util.root_pattern("pubspec.yaml", ".git"),
     }))
   end,
 }
