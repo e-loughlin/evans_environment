@@ -15,7 +15,7 @@ return {
       vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, bufopts)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_next, bufopts)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, bufopts)
-      vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, bufopts)
+      vim.keymap.set("n", "<leader>lR", function() require("telescope.builtin").lsp_references() end, bufopts)
       vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
       vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
     end
