@@ -275,3 +275,16 @@ if confirm_action "$warning_message"; then
 else
     echo "AWS CLI installation skipped..."
 fi
+
+# LazyGit Installation
+warning_message="Install LazyGit?"
+if confirm_action "$warning_message"; then
+    # Install LazyGit using Homebrew
+    brew install jesseduffield/lazygit/lazygit
+    
+    # Verify the installation
+    lazygit --version
+else
+    echo "LazyGit installation skipped..."
+fi
+
