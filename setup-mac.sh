@@ -281,6 +281,7 @@ warning_message="Install LazyGit?"
 if confirm_action "$warning_message"; then
     # Install LazyGit using Homebrew
     brew install jesseduffield/lazygit/lazygit
+	  brew install git-flow
     
     # Verify the installation
     lazygit --version
