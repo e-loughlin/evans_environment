@@ -8,43 +8,28 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    -- Configuration table of features provided by AstroLSP
     features = {
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
-      semantic_tokens = true, -- enable/disable semantic token highlighting
+      codelens = true,
+      inlay_hints = false,
+      semantic_tokens = true,
     },
-    -- customize lsp formatting options
+
     formatting = {
-      -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-        },
+        enabled = true,
+        allow_filetypes = {},
+        ignore_filetypes = {},
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
-      },
-      timeout_ms = 1000, -- default format timeout
+      disabled = {},
+      timeout_ms = 1000,
     },
 
-    -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright", -- Uncomment this if you're not using Mason to manage the `pyright` server
+      -- "pyright",
     },
 
-    -- customize language server configuration options passed to `lspconfig`
-    ---@diagnostic disable: missing-fields
     config = {
       pyright = {
-        on_attach = function(client, bufnr)
-          -- Your custom on_attach function can be added here
-        end,
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
         settings = {
           python = {
@@ -61,13 +46,10 @@ return {
       },
     },
 
-    -- customize how language servers are attached
     handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
       dartls = function(_, opts) require("lspconfig").dartls.setup(opts) end,
     },
 
-    -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
       lsp_codelens_refresh = {
         cond = "textDocument/codeLens",
@@ -81,27 +63,72 @@ return {
       },
     },
 
-    -- mappings to be set up on attaching of a language server
+    -- ✅ Add your custom LSP mappings globally (works with which-key)
     mappings = {
       n = {
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
+        ["gd"] = {
+          function() require("telescope.builtin").lsp_definitions() end,
+          desc = "Go to definition",
+          cond = "textDocument/definition",
         },
-        ["<Leader>uY"] = {
-          function() require("astrolsp.toggles").buffer_semantic_tokens() end,
-          desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client)
-            return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
-          end,
+        ["gr"] = {
+          function() require("telescope.builtin").lsp_references() end,
+          desc = "Find references",
+          cond = "textDocument/references",
+        },
+        ["gi"] = {
+          function() require("telescope.builtin").lsp_implementations() end,
+          desc = "Go to implementation",
+          cond = "textDocument/implementation",
+        },
+        ["gt"] = {
+          function() require("telescope.builtin").lsp_type_definitions() end,
+          desc = "Type definition",
+          cond = "textDocument/typeDefinition",
+        },
+        ["K"] = {
+          function() vim.lsp.buf.hover() end,
+          desc = "Hover",
+        },
+        ["<leader>lr"] = {
+          function() vim.lsp.buf.rename() end,
+          desc = "Rename symbol",
+          cond = "textDocument/rename",
+        },
+        ["<leader>ld"] = {
+          function() vim.diagnostic.open_float() end,
+          desc = "Line diagnostics",
+        },
+        ["[d"] = {
+          function() vim.diagnostic.goto_prev() end,
+          desc = "Prev diagnostic",
+        },
+        ["]d"] = {
+          function() vim.diagnostic.goto_next() end,
+          desc = "Next diagnostic",
+        },
+        ["<leader>ls"] = {
+          function() require("telescope.builtin").lsp_document_symbols() end,
+          desc = "Document symbols",
+        },
+        -- Removed because it fails to work. Default still works.
+        -- ["<leader>lS"] = {
+        --   function() require("telescope.builtin").lsp_workspace_symbols() end,
+        --   desc = "Workspace symbols",
+        -- },
+      },
+      i = {
+        ["<C-h>"] = {
+          function() vim.lsp.buf.signature_help() end,
+          desc = "Signature help",
+          cond = "textDocument/signatureHelp",
         },
       },
     },
 
-    -- A custom `on_attach` function to be run after the default `on_attach` function
+    -- ✅ Optional: Add extra on_attach logic (not required for mappings above to work)
     on_attach = function(client, bufnr)
-      -- Additional customization for on_attach can be placed here
+      -- You could add custom highlighting or other setup here
     end,
   },
 }

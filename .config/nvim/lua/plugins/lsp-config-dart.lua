@@ -2,26 +2,37 @@ return {
   "neovim/nvim-lspconfig",
 
   opts = function(_, opts)
-    local lspconfig = require "lspconfig"
+    local telescope = require "telescope.builtin"
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-    -- Define an on_attach function
     local on_attach = function(client, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+
+      -- Use Telescope for list-returning LSP features
+      vim.keymap.set("n", "gd", telescope.lsp_definitions, bufopts)
+      vim.keymap.set("n", "gr", telescope.lsp_references, bufopts)
+      vim.keymap.set("n", "gi", telescope.lsp_implementations, bufopts)
+      vim.keymap.set("n", "gt", telescope.lsp_type_definitions, bufopts)
+      vim.keymap.set("n", "<leader>ls", telescope.lsp_document_symbols, bufopts)
+      vim.keymap.set("n", "<leader>lS", telescope.lsp_workspace_symbols, bufopts)
+
+      -- Other LSP features
       vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-      vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol, bufopts)
       vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, bufopts)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_next, bufopts)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, bufopts)
-      vim.keymap.set("n", "<leader>lR", function() require("telescope.builtin").lsp_references() end, bufopts)
       vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
       vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
     end
 
-    -- Merge dartls configuration with shared opts
-    lspconfig.dartls.setup(vim.tbl_deep_extend("force", opts, {
+    -- Set these options for all LSPs
+    opts.capabilities = capabilities
+    opts.on_attach = on_attach
+
+    -- Override/add Dart-specific config
+    local lspconfig = require "lspconfig"
+    lspconfig.dartls.setup {
       cmd = { "dart", "language-server", "--protocol=lsp" },
       on_attach = on_attach,
       capabilities = capabilities,
@@ -31,6 +42,6 @@ return {
         },
       },
       root_dir = lspconfig.util.root_pattern("pubspec.yaml", ".git"),
-    }))
+    }
   end,
 }
