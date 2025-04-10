@@ -17,7 +17,7 @@ return {
     formatting = {
       format_on_save = {
         enabled = true,
-        allow_filetypes = {},
+        allow_filetypes = { "dart" },
         ignore_filetypes = {},
       },
       disabled = {},
