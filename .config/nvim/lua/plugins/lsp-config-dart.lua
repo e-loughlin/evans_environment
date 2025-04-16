@@ -9,13 +9,17 @@ return {
     local on_attach = function(client, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+      -- Enable formatting if supported
+      if client.name == "dartls" then client.server_capabilities.documentFormattingProvider = true end
+
       -- Use Telescope for list-returning LSP features
       vim.keymap.set("n", "gd", telescope.lsp_definitions, bufopts)
       vim.keymap.set("n", "gr", telescope.lsp_references, bufopts)
       vim.keymap.set("n", "gi", telescope.lsp_implementations, bufopts)
       vim.keymap.set("n", "gt", telescope.lsp_type_definitions, bufopts)
       vim.keymap.set("n", "<leader>ls", telescope.lsp_document_symbols, bufopts)
-      vim.keymap.set("n", "<leader>lS", telescope.lsp_workspace_symbols, bufopts)
+      -- This breaks it:
+      -- vim.keymap.set("n", "<leader>lS", telescope.lsp_workspace_symbols, bufopts)
 
       -- Other LSP features
       vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
