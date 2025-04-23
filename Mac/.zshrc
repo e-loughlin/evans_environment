@@ -213,7 +213,7 @@ far() {
     done
 }
 
-# Same as far, but only for git tracked files
+# Same as far, but only for git tracked files. Much faster.
 farg() {
     ext="$1"         # e.g., "*.py"
     find_str="$2"
