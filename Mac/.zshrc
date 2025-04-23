@@ -213,6 +213,18 @@ far() {
     done
 }
 
+# Same as far, but only for git tracked files
+farg() {
+    ext="$1"         # e.g., "*.py"
+    find_str="$2"
+    replace_str="$3"
+
+    git grep -lz "$find_str" -- "$ext" | while IFS= read -r -d '' file; do
+        echo "Modifying file: $file"
+        sed -i '' -e "s|$find_str|$replace_str|g" "$file"
+    done
+}
+
 # Python
 alias python=python3
 
