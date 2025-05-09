@@ -41,10 +41,33 @@ return {
           },
         },
       },
+
       clangd = {
-        cmd = { "clangd", "--compile-commands-dir=/Users/eloughlin/ws/compile_commands/compile_commands_fea.json" },
+        cmd = {
+          "clangd",
+          "--compile-commands-dir=/Users/eloughlin/ws/polez2",
+          "--header-insertion=never", -- optional
+          "--clang-tidy",
+          "--all-scopes-completion",
+        },
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        init_options = {
+          clangdFileStatus = true,
+        },
+      },
+
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
+            },
+          },
+        },
       },
     },
+
 
     handlers = {
       dartls = function(_, opts) require("lspconfig").dartls.setup(opts) end,

@@ -6,6 +6,82 @@ return {
       mappings = {
         -- first key is the mode
         n = {
+
+          ["dM"] = {"<cmd>delmarks A-Z a-z<cr>", desc = "Delete all marks"},
+
+          ["'}"] = {
+                function()
+                  local global_marks = vim.fn.getmarklist()
+                  local current_buf = vim.api.nvim_get_current_buf()
+                  local current_pos = vim.api.nvim_win_get_cursor(0)
+                  local current_file = vim.api.nvim_buf_get_name(current_buf)
+
+                  local next_mark = nil
+                  local min_distance = math.huge
+
+                  for _, mark in ipairs(global_marks) do
+                    if mark.mark:match("[A-Z]") and mark.file ~= "" then
+                      local is_same_file = mark.file == current_file
+                      local is_after = is_same_file and mark.pos[2] > current_pos[1]
+                      local is_other_file = not is_same_file
+
+                      if is_after or is_other_file then
+                        local distance = is_same_file and (mark.pos[2] - current_pos[1]) or math.huge
+                        if distance < min_distance then
+                          next_mark = mark
+                          min_distance = distance
+                        end
+                      end
+                    end
+                  end
+
+                  if next_mark then
+                    vim.cmd("edit " .. vim.fn.fnameescape(next_mark.file))
+                    vim.api.nvim_win_set_cursor(0, { next_mark.pos[2], next_mark.pos[3] })
+                  else
+                    vim.notify("No next global mark found", vim.log.levels.INFO)
+                  end
+                end,
+                desc = "Jump to next global mark",
+              },
+
+          ["'{"] = {
+            function()
+              local global_marks = vim.fn.getmarklist()
+              local current_buf = vim.api.nvim_get_current_buf()
+              local current_pos = vim.api.nvim_win_get_cursor(0)
+              local current_file = vim.api.nvim_buf_get_name(current_buf)
+
+              local prev_mark = nil
+              local min_distance = math.huge
+
+              for _, mark in ipairs(global_marks) do
+                if mark.mark:match("[A-Z]") and mark.file ~= "" then
+                  local is_same_file = mark.file == current_file
+                  local is_before = is_same_file and mark.pos[2] < current_pos[1]
+                  local is_other_file = not is_same_file
+
+                  if is_before or is_other_file then
+                    local distance = is_same_file and (current_pos[1] - mark.pos[2]) or math.huge
+                    if distance < min_distance then
+                      prev_mark = mark
+                      min_distance = distance
+                    end
+                  end
+                end
+              end
+
+              if prev_mark then
+                vim.cmd("edit " .. vim.fn.fnameescape(prev_mark.file))
+                vim.api.nvim_win_set_cursor(0, { prev_mark.pos[2], prev_mark.pos[3] })
+              else
+                vim.notify("No previous global mark found", vim.log.levels.INFO)
+              end
+            end,
+            desc = "Jump to previous global mark",
+          },
+          ["<leader>m"] = { name = "󰈸 Molten (Python / Jupyter Runner)" },
+          ["<leader>r"] = { name = " Quarto (Jupyter Runner)" },
           -- second key is the lefthand side of the map
           -- mappings seen under group name "Buffer"
           ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
