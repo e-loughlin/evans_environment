@@ -1,3 +1,4 @@
 *.scpt
 iterm2-random-background.scpt
 .DS_Store
+.config/nvim/lazy-lock.json
