@@ -35,6 +35,7 @@ return {
         "python",
         "codelldb", -- Add the LLDB debugger
         "dart",
+        "rust_analyzer",
       },
       handlers = {
         python = function(source_name)

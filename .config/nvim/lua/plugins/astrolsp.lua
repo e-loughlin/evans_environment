@@ -68,7 +68,6 @@ return {
       },
     },
 
-
     handlers = {
       dartls = function(_, opts) require("lspconfig").dartls.setup(opts) end,
     },
