@@ -15,6 +15,20 @@ confirm_action() {
     esac
 }
 
+# Oh My Zsh
+warning_message="Install oh-my-zsh?"
+if confirm_action "$warning_message"; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Add zsh-fzf-history-search plugin
+    git clone https://github.com/joshskidmore/zsh-fzf-history-search \
+        ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+
+    echo "Plugin 'zsh-fzf-history-search' added. Add it to your plugins list in ~/.zshrc."
+else
+    echo "Skipped oh-my-zsh installation..."
+fi
+
 # WezTerm (Terminal)
 warning_message="Install or upgrade WezTerm?"
 if confirm_action "$warning_message"; then
