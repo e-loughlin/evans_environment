@@ -509,6 +509,11 @@ delete_kernel() {
     fi
 }
 
+combine() {
+    # Run the python script and pass any arguments (like file patterns) to it
+    python3 ~/ws/evans_environment/tools/combine.py "$@"
+}
+
 # Alias for quick access
 alias installkernel='install_kernel'
 alias lg='lazygit'
