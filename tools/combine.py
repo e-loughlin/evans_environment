@@ -1,5 +1,6 @@
 import fnmatch
 import os
+import sys
 
 
 def confirm_action(warning_message):
@@ -58,4 +59,10 @@ def combine_files(pattern="*.py", output_file="combined.txt"):
 
 
 if __name__ == "__main__":
-    combine_files()
+    # Check if the user provided an argument
+    if len(sys.argv) > 1:
+        user_pattern = sys.argv[1]
+        combine_files(pattern=user_pattern)
+    else:
+        # Default behavior if no argument is provided
+        combine_files()
